@@ -4,7 +4,7 @@ const Product = require('./productModel');
 class ProductService {
     async uploadImage(img) {
         await img.mv('./public/images/' + img.name);
-        //http://localhost:5555/images/[img.name]
+        //http://localhost:5000/images/[img.name]
     }
 
     deleteImage(img) {
