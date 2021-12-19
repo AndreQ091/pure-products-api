@@ -56,6 +56,15 @@ const server = http.createServer(async (req, res) => {
         }
     }
 
+    else if (urlparse.pathname.match(/\/products\/upload\/([a-z A-Z 0-9]+)/) && req.method === 'POST') {
+        try {
+            await ProductController.uploadProductImage(req, res);
+        } catch (e) {
+            res.writeHead(500, {"Content-Type": "application/json"});
+            res.end(JSON.stringify({message: e.message}));
+        }
+    }
+
     else {
         res.writeHead(404, {"Content-Type": "application/json"});
     }

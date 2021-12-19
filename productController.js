@@ -1,8 +1,8 @@
 const ProductService = require("./productService");
 
 class ProductController {
+
     async getAllProducts(req, res) {
-        //const {limit, offset} = req.query;
         const posts = await ProductService.getAllProducts();
         res.writeHead(200, {"Content-Type": "application/json"});
         res.end(JSON.stringify(posts));
